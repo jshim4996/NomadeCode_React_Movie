@@ -5,14 +5,55 @@
   </body>
   <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-  <script>
-    const root = document.getElementById("root");
-    const span = React.createElement(
-      "span",
-      { id: "sexy-span", style: { color: "red" } },
-      "Hello I'm a span"
-    ); //createElement 파라메터 값으로 생성하고자 하는 html 태그와 똑같은 이름을 사용해야함
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    ReactDOM.render(span, root);
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouseEnter")}>
+        Hello I'm a h3
+      </h3>
+    );
+
+    const Button = () => (
+      <button
+        onClick={() => console.log("Im clicked")}
+        style={{ backgroundColor: "tomato" }}
+      >
+        Click me
+      </button>
+    );
+
+    // const container = React.createElement("div", null, [Title, Button]);
+    const Container = () => (
+      <div>
+        <Title /> <Button />
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
+
+    /*
+     const h3 = React.createElement(
+       "h3",
+       {
+         id: "title",
+         onMouseEnter: () => console.log("mouseEnter"),
+       },
+       "Hello I'm a h3"
+     ); //createElement 파라메터 값으로 생성하고자 하는 html 태그와 똑같은 이름을 사용해야함
+     */
+    // const btn = React.createElement(
+    //   "button",
+    //   {
+    //     onClick: () => console.log("Im clicked"),
+    //     style: {
+    //       backgroundColor: "tomato",
+    //     },
+    //   },
+    //   "Click me"
+    // );
+
+    // ReactDOM.render(span, root);
+    // ReactDOM.render(btn, root);
   </script>
 </html>
